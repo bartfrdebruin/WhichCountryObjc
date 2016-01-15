@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WhichCountryVC.m"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    WhichCountryVC *whichCountryVC = [[WhichCountryVC alloc] init];
+    self.window.rootViewController = whichCountryVC;
+    
     return YES;
 }
 

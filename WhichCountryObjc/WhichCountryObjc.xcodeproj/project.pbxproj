@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		1D6425601C4951F800D2341F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
 		1D6425631C4951F800D2341F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
-		1D6425661C4951F800D2341F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425651C4951F800D2341F /* ViewController.m */; };
-		1D6425691C4951F800D2341F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D6425671C4951F800D2341F /* Main.storyboard */; };
 		1D64256B1C4951F800D2341F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256A1C4951F800D2341F /* Assets.xcassets */; };
 		1D64256E1C4951F800D2341F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256C1C4951F800D2341F /* LaunchScreen.storyboard */; };
 		1D6425791C4951F800D2341F /* WhichCountryObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425781C4951F800D2341F /* WhichCountryObjcTests.m */; };
 		1D6425841C4951F800D2341F /* WhichCountryObjcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425831C4951F800D2341F /* WhichCountryObjcUITests.m */; };
+		1D6425941C49523600D2341F /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
+		1D6425951C49523600D2341F /* WhichCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6425931C49523600D2341F /* WhichCountryVC.xib */; };
+		1D6425991C4952F300D2341F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6425981C4952F300D2341F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +40,6 @@
 		1D64255F1C4951F800D2341F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D6425611C4951F800D2341F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D6425621C4951F800D2341F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6425641C4951F800D2341F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1D6425651C4951F800D2341F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1D6425681C4951F800D2341F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D64256A1C4951F800D2341F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D64256D1C4951F800D2341F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D64256F1C4951F800D2341F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +49,11 @@
 		1D64257F1C4951F800D2341F /* WhichCountryObjcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhichCountryObjcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D6425831C4951F800D2341F /* WhichCountryObjcUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhichCountryObjcUITests.m; sourceTree = "<group>"; };
 		1D6425851C4951F800D2341F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D6425911C49523600D2341F /* WhichCountryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhichCountryVC.h; sourceTree = "<group>"; };
+		1D6425921C49523600D2341F /* WhichCountryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhichCountryVC.m; sourceTree = "<group>"; };
+		1D6425931C49523600D2341F /* WhichCountryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichCountryVC.xib; sourceTree = "<group>"; };
+		1D6425981C4952F300D2341F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1D64259A1C4952FA00D2341F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6425991C4952F300D2341F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 		1D6425521C4951F800D2341F = {
 			isa = PBXGroup;
 			children = (
+				1D64259C1C49530200D2341F /* Frameworks */,
 				1D64255D1C4951F800D2341F /* WhichCountryObjc */,
 				1D6425771C4951F800D2341F /* WhichCountryObjcTests */,
 				1D6425821C4951F800D2341F /* WhichCountryObjcUITests */,
@@ -101,11 +106,8 @@
 		1D64255D1C4951F800D2341F /* WhichCountryObjc */ = {
 			isa = PBXGroup;
 			children = (
-				1D6425611C4951F800D2341F /* AppDelegate.h */,
-				1D6425621C4951F800D2341F /* AppDelegate.m */,
-				1D6425641C4951F800D2341F /* ViewController.h */,
-				1D6425651C4951F800D2341F /* ViewController.m */,
-				1D6425671C4951F800D2341F /* Main.storyboard */,
+				1D6425961C49523F00D2341F /* AppDelegate */,
+				1D6425971C49524800D2341F /* WhichCountryVC */,
 				1D64256A1C4951F800D2341F /* Assets.xcassets */,
 				1D64256C1C4951F800D2341F /* LaunchScreen.storyboard */,
 				1D64256F1C4951F800D2341F /* Info.plist */,
@@ -138,6 +140,34 @@
 				1D6425851C4951F800D2341F /* Info.plist */,
 			);
 			path = WhichCountryObjcUITests;
+			sourceTree = "<group>";
+		};
+		1D6425961C49523F00D2341F /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				1D6425611C4951F800D2341F /* AppDelegate.h */,
+				1D6425621C4951F800D2341F /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		1D6425971C49524800D2341F /* WhichCountryVC */ = {
+			isa = PBXGroup;
+			children = (
+				1D6425911C49523600D2341F /* WhichCountryVC.h */,
+				1D6425921C49523600D2341F /* WhichCountryVC.m */,
+				1D6425931C49523600D2341F /* WhichCountryVC.xib */,
+			);
+			name = WhichCountryVC;
+			sourceTree = "<group>";
+		};
+		1D64259C1C49530200D2341F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D64259A1C4952FA00D2341F /* CoreLocation.framework */,
+				1D6425981C4952F300D2341F /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +275,7 @@
 			files = (
 				1D64256E1C4951F800D2341F /* LaunchScreen.storyboard in Resources */,
 				1D64256B1C4951F800D2341F /* Assets.xcassets in Resources */,
-				1D6425691C4951F800D2341F /* Main.storyboard in Resources */,
+				1D6425951C49523600D2341F /* WhichCountryVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,8 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D6425661C4951F800D2341F /* ViewController.m in Sources */,
 				1D6425631C4951F800D2341F /* AppDelegate.m in Sources */,
+				1D6425941C49523600D2341F /* WhichCountryVC.m in Sources */,
 				1D6425601C4951F800D2341F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,14 +338,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1D6425671C4951F800D2341F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D6425681C4951F800D2341F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1D64256C1C4951F800D2341F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -412,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WhichCountryObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BartdeBruin.WhichCountryObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WhichCountryObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BartdeBruin.WhichCountryObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WhichCountryVC.h
 //  WhichCountryObjc
 //
 //  Created by Bart de Bruin on 15-01-16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WhichCountryVC : UIViewController
 
 @end
-
