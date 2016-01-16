@@ -15,7 +15,6 @@
 		1D6425841C4951F800D2341F /* WhichCountryObjcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425831C4951F800D2341F /* WhichCountryObjcUITests.m */; };
 		1D6425941C49523600D2341F /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
 		1D6425951C49523600D2341F /* WhichCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6425931C49523600D2341F /* WhichCountryVC.xib */; };
-		1D6425991C4952F300D2341F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6425981C4952F300D2341F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +51,6 @@
 		1D6425911C49523600D2341F /* WhichCountryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhichCountryVC.h; sourceTree = "<group>"; };
 		1D6425921C49523600D2341F /* WhichCountryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhichCountryVC.m; sourceTree = "<group>"; };
 		1D6425931C49523600D2341F /* WhichCountryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhichCountryVC.xib; sourceTree = "<group>"; };
-		1D6425981C4952F300D2341F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		1D64259A1C4952FA00D2341F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D6425991C4952F300D2341F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +160,6 @@
 		1D64259C1C49530200D2341F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1D64259A1C4952FA00D2341F /* CoreLocation.framework */,
-				1D6425981C4952F300D2341F /* MapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -520,6 +514,7 @@
 				1D64258A1C4951F800D2341F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D64258B1C4951F800D2341F /* Build configuration list for PBXNativeTarget "WhichCountryObjcTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +523,7 @@
 				1D64258D1C4951F800D2341F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D64258E1C4951F800D2341F /* Build configuration list for PBXNativeTarget "WhichCountryObjcUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +532,7 @@
 				1D6425901C4951F800D2341F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
