@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@interface WhichCountryVC ()
+@interface WhichCountryVC () <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) KMLParser *kmlParser;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation WhichCountryVC 
+@implementation WhichCountryVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,8 +36,8 @@
     
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
-    [self.mapView addOverlays:self.countries];
-
+    [self.mapView addOverlays: self.countries];
+    
     // Creating a CLLocationCoordinate2D for testing.
     //CLLocationDegrees latitude = 5.72277593612671;
     //CLLocationDegrees longitude = 50.96525955200195;
@@ -46,8 +46,6 @@
     
     self.locationInAmsterdam = CLLocationCoordinate2DMake(longitude, latitude);
     
-    // Add all of the MKAnnotation objects parsed from the KML file to the map.
-    self.annotations = [self.kmlParser points];
 }
 
 
@@ -79,112 +77,43 @@
 
 - (IBAction)findTheCountry:(id)sender {
     
-//    // Setting up the coordinate to check against.
-//    CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
-//    
-//    // Looping through the polygon's obtained by the kml parser.
-//    for (MKPolygon *country in self.countries) {
-//        
-//        MKPolygonView *polygonView = (MKPolygonView *)[self.mapView rendererForOverlay:country];
-//        
-//        BOOL pointIsInPolygon = CGPathContainsPoint(country.points, NULL, polygonCoordinatePoint, FALSE);
-//
-//        if (pointIsInPolygon) {
-//            
-//            NSLog(@"We've got a winner");
-//        } else {
-//            NSLog(@"Bummer");
-//        }
-//        
-//    }
-}
-
+    // The two properties to compare.
+    CGMutablePathRef mutablePathReference = CGPathCreateMutable();
+    CGPoint polygonCoordinatePoint = CGPointMake(34.5553494, 69.20748600000002);
     
+    // Looping through the polygon's, obtained by the kml parser.
+    //    for (MKPolygon *country in self.countries) {
     
+    MKPolygon *country = self.countries[0];
     
-    
-    
-    
-//    
-//    // The two properties to compare.
-//    CGMutablePathRef mutablePathReference = CGPathCreateMutable();
-//    CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
-//    
-//    // Looping through the polygon's, obtained by the kml parser.
-//    for (MKPolygon *country in self.countries) {
-//        
-//        // Looping through the path.
-//        MKMapPoint *countryPolygonPoints = country.points;
-//        for (int p=0; p < country.pointCount; p++) {
-//            
-//            // Creating the path.
-//            MKMapPoint mapPoint = countryPolygonPoints[p];
-//            if (p == 0) {
-//                CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-//            } else {
-//                CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-//            }
-//            
-//        }
-//        
-//        // Checking if the point lies inside the polygon.
-//        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
-//
-//        
-//        NSLog(@"%@",country.title);
-//        if(!pointIsInPolygon) {
-//            NSLog(@"bummer");
-//
-//        } else if (pointIsInPolygon)
-//            {
-//                NSLog(@"We've finally got a winner");
-//            }
-//        
-//        }
-//    }
-
-//            // Checking if the point lies inside the polygon.
-//            BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
-            
-//            if (pointIsInPolygon) {
-//                
-//                // Giving the country's property polygon to the property that needs to be drawn on the map.
-//                self.polygonCountryOnTheMap = country;
-//                CGPathRelease(mutablePathReference);
-//            }
-//            
-//        } if (self.polygonCountryOnTheMap != nil) {
-//            break;
-//        }
-//    }
-//    
-//    // Walk the list of overlays and annotations and create a MKMapRect that
-//    // bounds all of them and store it into flyTo.
-//    MKMapRect flyTo = MKMapRectNull;
-//    for (id <MKOverlay> overlay in self.countries) {
-//        if (MKMapRectIsNull(flyTo)) {
-//            flyTo = [overlay boundingMapRect];
-//        } else {
-//            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
-//        }
-//    }
-//    
-//    for (id <MKAnnotation> annotation in self.annotations) {
-//        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-//        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-//        if (MKMapRectIsNull(flyTo)) {
-//            flyTo = pointRect;
-//        } else {
-//            flyTo = MKMapRectUnion(flyTo, pointRect);
-//        }
-//    }
-//    
-//    // Position the map so that all overlays and annotations are visible on screen.
-//    self.mapView.visibleMapRect = flyTo;
-
-
-    
+    // Looping through the path.
+    MKMapPoint *countryPolygonPoints = country.points;
+    for (int p=0; p < country.pointCount; p++) {
         
+        // Creating the path.
+        MKMapPoint mapPoint = countryPolygonPoints[p];
+        if (p == 0) {
+            CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+        } else {
+            CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+        }
+    }
+    
+    // Checking if the point lies inside the polygon.
+    
+    BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
+    
+    NSLog(@"%@",country.title);
+    if(pointIsInPolygon) {
+        
+        NSLog(@"that is amazing!");
+        
+    } else             {
+        NSLog(@"Bummer!");
+    }
+    
+    
+}
 
 
 @end
