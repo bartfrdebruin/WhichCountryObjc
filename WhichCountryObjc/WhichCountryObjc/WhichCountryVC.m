@@ -77,64 +77,46 @@
 
 - (IBAction)findTheCountry:(id)sender {
     
-    // The two properties to compare.
-    CGMutablePathRef mutablePathReference = CGPathCreateMutable();
-    CGPoint polygonCoordinatePoint =  CGPointMake(34.5553494, 69.20748600000002); //CGPointMake(69.20748600000002, 34.5553494); //CGPointMake(34.5553494, 69.20748600000002);
     //CGPoint polygonCoordinatePoint
-    
+//    CGPoint polygonCoordinatePoint =  CGPointMake(34.5553494, 69.20748600000002);
     
     // Looping through the polygon's, obtained by the kml parser.
-    //    for (MKPolygon *country in self.countries) {
-    
-    MKPolygon *country = self.countries[0];
-    
-    // Looping through the path.
-    MKMapPoint *countryPolygonPoints = country.points;
-    for (int p=0; p < country.pointCount; p++) {
+    for (MKPolygon *country in self.countries) {
+ 
+        // The two properties to compare.
+        CGMutablePathRef mutablePathReference = CGPathCreateMutable();
         
-        // Creating the path.
-        MKMapPoint mapPoint = countryPolygonPoints[p];
-        //NSLog(@"%@",country.title);
-        //MKMapPoint mapPoint = MKMapPointForCoordinate(countryPolygonPoints[p]);
-        if (p == 0) {
-            CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-            NSLog(@" %f",mapPoint.x);
-            NSLog(@" %f",mapPoint.y);
-        } else {
-            CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-            NSLog(@" %f",mapPoint.x);
-            NSLog(@" %f",mapPoint.y);
+        // Looping through the path.
+        MKMapPoint *countryPolygonPoints = country.points;
+        for (int p=0; p < country.pointCount; p++) {
+            
+            // Creating the path.
+            MKMapPoint mapPoint = countryPolygonPoints[p];
+            
+            //MKMapPoint mapPoint = MKMapPointForCoordinate(countryPolygonPoints[p]);
+            if (p == 0) {
+                CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+            } else {
+                CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+            }
+        }
+        
+        // Creating a CGPoint out of a CLLocation.
+        CLLocationCoordinate2D c2D = CLLocationCoordinate2DMake(34.5553494, 69.20748600000002);
+        MKMapPoint cMapPoint = MKMapPointForCoordinate(c2D);
+        CGPoint coordinatePoint =  CGPointMake(cMapPoint.x, cMapPoint.y);
+        
+        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, coordinatePoint, FALSE);
+        
+        NSLog(@"%@",country.title);
+        if(pointIsInPolygon) {
+            
+            NSLog(@"that is amazing!");
+            
+        } else             {
+            NSLog(@"Bummer!");
         }
     }
-    
-    // Checking if the point lies inside the polygon.
-    CGPathCloseSubpath(mutablePathReference);
-    CLLocationCoordinate2D c2D = CLLocationCoordinate2DMake(34.5553494, 69.20748600000002);
-    MKMapPoint pointOnM = MKMapPointForCoordinate(c2D);
-    //BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, pointOnM, FALSE);
-    NSLog(@"COORDINATE");
-    
-    CLLocationCoordinate2D  ctrpoint;
-    ctrpoint.latitude = 34.543896;
-    ctrpoint.longitude =69.160652;
-    MKMapPoint point = MKMapPointForCoordinate(ctrpoint);
-    NSLog(@" %f",point.x);
-    NSLog(@" %f",point.y);
-    CGPoint point2 =  CGPointMake(point.x, point.y);
-    BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, point2, FALSE);
-    
-    //BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
-    
-    NSLog(@"%@",country.title);
-    if(pointIsInPolygon) {
-        
-        NSLog(@"that is amazing!");
-        
-    } else             {
-        NSLog(@"Bummer!");
-    }
-    
-    
 }
 
 
