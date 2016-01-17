@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhichCountryVC">
             <connections>
-                <outlet property="geoLocation" destination="fFH-b1-C6K" id="2s9-XG-GSY"/>
+                <outlet property="geoLocationLatitude" destination="fFH-b1-C6K" id="4kr-Yi-wgt"/>
+                <outlet property="geoLocationLongitude" destination="9Pv-Dj-UCU" id="dGY-3f-q8i"/>
                 <outlet property="mapView" destination="N7Z-zJ-ZOZ" id="OJQ-xz-Z86"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,10 +24,13 @@
                         <outlet property="delegate" destination="-1" id="7id-K3-AtQ"/>
                     </connections>
                 </mapView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a geolocation to update the map with the correct country!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFH-b1-C6K">
-                    <rect key="frame" x="28" y="28" width="544" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lattitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFH-b1-C6K">
+                    <rect key="frame" x="28" y="28" width="264" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ft8-xk-Cu6"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKo-Iv-O6e">
                     <rect key="frame" x="526" y="66" width="46" height="30"/>
@@ -36,20 +40,30 @@
                         <action selector="findTheCountry:" destination="-1" eventType="touchUpInside" id="dcQ-9v-Iot"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-Dj-UCU">
+                    <rect key="frame" x="308" y="28" width="264" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="7Ii-4e-0H4"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="N7Z-zJ-ZOZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="53M-ac-TdH"/>
-                <constraint firstAttribute="trailing" secondItem="N7Z-zJ-ZOZ" secondAttribute="trailing" id="APm-ii-64U"/>
-                <constraint firstItem="N7Z-zJ-ZOZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CRL-gW-Gc5"/>
-                <constraint firstAttribute="trailing" secondItem="fFH-b1-C6K" secondAttribute="trailing" constant="28" id="JPx-I1-PGb"/>
-                <constraint firstAttribute="trailing" secondItem="MKo-Iv-O6e" secondAttribute="trailing" constant="28" id="PX2-2r-G17"/>
-                <constraint firstItem="fFH-b1-C6K" firstAttribute="leading" secondItem="N7Z-zJ-ZOZ" secondAttribute="trailing" constant="-572" id="QQG-x0-kV2"/>
-                <constraint firstItem="fFH-b1-C6K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="WkH-nt-9kR"/>
-                <constraint firstItem="MKo-Iv-O6e" firstAttribute="top" secondItem="fFH-b1-C6K" secondAttribute="bottom" constant="8" id="etq-pG-GXG"/>
-                <constraint firstAttribute="bottom" secondItem="N7Z-zJ-ZOZ" secondAttribute="bottom" id="gyf-Jq-CdB"/>
-                <constraint firstItem="fFH-b1-C6K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="p3O-CC-oiV"/>
-                <constraint firstItem="MKo-Iv-O6e" firstAttribute="trailing" secondItem="fFH-b1-C6K" secondAttribute="trailing" id="ttv-iz-eMX"/>
+                <constraint firstAttribute="bottom" secondItem="N7Z-zJ-ZOZ" secondAttribute="bottom" id="33k-sF-h8b"/>
+                <constraint firstAttribute="trailing" secondItem="MKo-Iv-O6e" secondAttribute="trailing" constant="28" id="ECc-qV-0ql"/>
+                <constraint firstItem="N7Z-zJ-ZOZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ifs-jD-pd9"/>
+                <constraint firstItem="9Pv-Dj-UCU" firstAttribute="width" secondItem="fFH-b1-C6K" secondAttribute="width" id="SLt-sD-toX"/>
+                <constraint firstItem="fFH-b1-C6K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="WKy-77-JQ1"/>
+                <constraint firstItem="9Pv-Dj-UCU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="ZZa-Jh-peD"/>
+                <constraint firstAttribute="trailing" secondItem="N7Z-zJ-ZOZ" secondAttribute="trailing" id="c15-xj-Q53"/>
+                <constraint firstItem="MKo-Iv-O6e" firstAttribute="trailing" secondItem="9Pv-Dj-UCU" secondAttribute="trailing" id="lj8-N5-VMI"/>
+                <constraint firstItem="N7Z-zJ-ZOZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="m04-5i-QZr"/>
+                <constraint firstItem="9Pv-Dj-UCU" firstAttribute="leading" secondItem="fFH-b1-C6K" secondAttribute="trailing" constant="16" id="oKf-5c-u31"/>
+                <constraint firstItem="MKo-Iv-O6e" firstAttribute="top" secondItem="9Pv-Dj-UCU" secondAttribute="bottom" constant="8" id="tPj-Lm-LCH"/>
+                <constraint firstItem="fFH-b1-C6K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="vGh-JI-Z4R"/>
+                <constraint firstAttribute="trailing" secondItem="9Pv-Dj-UCU" secondAttribute="trailing" constant="28" id="wRe-yj-FzE"/>
             </constraints>
         </view>
     </objects>

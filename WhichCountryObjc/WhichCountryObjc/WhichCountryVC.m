@@ -16,7 +16,8 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) KMLParser *kmlParser;
 @property (nonatomic, strong) NSArray *countries;
-@property (strong, nonatomic) IBOutlet UITextField *geoLocation;
+@property (strong, nonatomic) IBOutlet UITextField *geoLocationLatitude;
+@property (strong, nonatomic) IBOutlet UITextField *geoLocationLongitude;
 @property (nonatomic) CLLocationCoordinate2D locationInAmsterdam;
 @property (nonatomic, strong) MKPolygon *polygonCountryOnTheMap;
 @property (nonatomic, strong) NSArray *annotations;
@@ -36,16 +37,6 @@
     
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
-    [self.mapView addOverlays: self.countries];
-    
-    // Creating a CLLocationCoordinate2D for testing.
-    //CLLocationDegrees latitude = 5.72277593612671;
-    //CLLocationDegrees longitude = 50.96525955200195;
-    CLLocationDegrees latitude = 50.850340;
-    CLLocationDegrees longitude = 4.351710;
-    
-    self.locationInAmsterdam = CLLocationCoordinate2DMake(longitude, latitude);
-    
 }
 
 
@@ -65,7 +56,15 @@
 #pragma mark MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-    return [self.kmlParser rendererForOverlay:overlay];
+    
+    if ([overlay isKindOfClass:[MKPolygon class]])
+    {
+        MKPolygonView* aView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay];
+        aView.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
+        return aView;
+    }
+    return nil;
+    
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -77,8 +76,8 @@
 
 - (IBAction)findTheCountry:(id)sender {
     
-    //CGPoint polygonCoordinatePoint
-//    CGPoint polygonCoordinatePoint =  CGPointMake(34.5553494, 69.20748600000002);
+    double geoLatitude = [self.geoLocationLatitude.text doubleValue];
+    double geoLongitude = [self.geoLocationLongitude.text doubleValue];
     
     // Looping through the polygon's, obtained by the kml parser.
     for (MKPolygon *country in self.countries) {
@@ -102,16 +101,24 @@
         }
         
         // Creating a CGPoint out of a CLLocation.
-        CLLocationCoordinate2D c2D = CLLocationCoordinate2DMake(34.5553494, 69.20748600000002);
+        CLLocationCoordinate2D c2D = CLLocationCoordinate2DMake(geoLatitude, geoLongitude);
         MKMapPoint cMapPoint = MKMapPointForCoordinate(c2D);
         CGPoint coordinatePoint =  CGPointMake(cMapPoint.x, cMapPoint.y);
         
+        // Checking whether point lies within an polygon.
         BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, coordinatePoint, FALSE);
         
-        NSLog(@"%@",country.title);
         if(pointIsInPolygon) {
             
-            NSLog(@"that is amazing!");
+            NSLog(@"%@",country.title);
+            MKMapRect flyTo = MKMapRectNull;
+
+            [self.mapView addOverlay:country];
+            flyTo = [country boundingMapRect];
+            self.mapView.visibleMapRect = flyTo;
+            
+            // Forcing the for loop to quit.
+            break;
             
         } else             {
             NSLog(@"Bummer!");
