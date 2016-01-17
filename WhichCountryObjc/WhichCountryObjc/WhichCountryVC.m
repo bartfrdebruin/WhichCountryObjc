@@ -36,6 +36,7 @@
     
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
+    [self.mapView addOverlays:self.countries];
 
     // Creating a CLLocationCoordinate2D for testing.
     //CLLocationDegrees latitude = 5.72277593612671;
@@ -75,53 +76,72 @@
 
 #pragma mark find the country
 
-- (CGPoint)pointForMapPoint:(MKMapPoint)mapPoint {
-    
-    
-    return CGPointMake(mapPoint.x, mapPoint.y);
-    
-}
-
-
 
 - (IBAction)findTheCountry:(id)sender {
     
-    // The two properties to compare.
-    CGMutablePathRef mutablePathReference = CGPathCreateMutable();
-    CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
+//    // Setting up the coordinate to check against.
+//    CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
+//    
+//    // Looping through the polygon's obtained by the kml parser.
+//    for (MKPolygon *country in self.countries) {
+//        
+//        MKPolygonView *polygonView = (MKPolygonView *)[self.mapView rendererForOverlay:country];
+//        
+//        BOOL pointIsInPolygon = CGPathContainsPoint(country.points, NULL, polygonCoordinatePoint, FALSE);
+//
+//        if (pointIsInPolygon) {
+//            
+//            NSLog(@"We've got a winner");
+//        } else {
+//            NSLog(@"Bummer");
+//        }
+//        
+//    }
+}
+
     
-    // Looping through the polygon's, obtained by the kml parser.
-    for (MKPolygon *country in self.countries) {
-        
-        // Looping through the path.
-        MKMapPoint *countryPolygonPoints = country.points;
-        for (int p=0; p < country.pointCount; p++) {
-            
-            // Creating the path.
-            MKMapPoint mapPoint = countryPolygonPoints[p];
-            if (p == 0) {
-                CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-            } else {
-                CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
-            }
-            
-        }
-        
-        // Checking if the point lies inside the polygon.
-        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
-
-        
-        NSLog(@"%@",country.title);
-        if(!pointIsInPolygon) {
-            NSLog(@"bummer");
-
-        } else if (pointIsInPolygon)
-            {
-                NSLog(@"We've finally got a winner");
-            }
-        
-        }
-    }
+    
+    
+    
+    
+    
+//    
+//    // The two properties to compare.
+//    CGMutablePathRef mutablePathReference = CGPathCreateMutable();
+//    CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
+//    
+//    // Looping through the polygon's, obtained by the kml parser.
+//    for (MKPolygon *country in self.countries) {
+//        
+//        // Looping through the path.
+//        MKMapPoint *countryPolygonPoints = country.points;
+//        for (int p=0; p < country.pointCount; p++) {
+//            
+//            // Creating the path.
+//            MKMapPoint mapPoint = countryPolygonPoints[p];
+//            if (p == 0) {
+//                CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+//            } else {
+//                CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
+//            }
+//            
+//        }
+//        
+//        // Checking if the point lies inside the polygon.
+//        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
+//
+//        
+//        NSLog(@"%@",country.title);
+//        if(!pointIsInPolygon) {
+//            NSLog(@"bummer");
+//
+//        } else if (pointIsInPolygon)
+//            {
+//                NSLog(@"We've finally got a winner");
+//            }
+//        
+//        }
+//    }
 
 //            // Checking if the point lies inside the polygon.
 //            BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
