@@ -9,6 +9,7 @@
 #import "WhichCountryVC.h"
 #import "KMLParser.h"
 #import <MapKit/MapKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 @interface WhichCountryVC ()
 
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *geoLocation;
 @property (nonatomic) CLLocationCoordinate2D locationInAmsterdam;
 @property (nonatomic, strong) MKPolygon *polygonCountryOnTheMap;
+@property (nonatomic, strong) NSArray *annotations;
 
 @end
 
@@ -34,42 +36,17 @@
     
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
-    [self.mapView addOverlays:self.countries];
-    
+
     // Creating a CLLocationCoordinate2D for testing.
-    CLLocationDegrees latitude = 52.37783;
-    CLLocationDegrees longitude = 4.87995;
+    //CLLocationDegrees latitude = 5.72277593612671;
+    //CLLocationDegrees longitude = 50.96525955200195;
+    CLLocationDegrees latitude = 50.850340;
+    CLLocationDegrees longitude = 4.351710;
     
-    self.locationInAmsterdam = CLLocationCoordinate2DMake(latitude, longitude);
-    
+    self.locationInAmsterdam = CLLocationCoordinate2DMake(longitude, latitude);
     
     // Add all of the MKAnnotation objects parsed from the KML file to the map.
-    NSArray *annotations = [self.kmlParser points];
-    [self.mapView addAnnotations:annotations];
-    
-    // Walk the list of overlays and annotations and create a MKMapRect that
-    // bounds all of them and store it into flyTo.
-    MKMapRect flyTo = MKMapRectNull;
-    for (id <MKOverlay> overlay in self.countries) {
-        if (MKMapRectIsNull(flyTo)) {
-            flyTo = [overlay boundingMapRect];
-        } else {
-            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
-        }
-    }
-    
-    for (id <MKAnnotation> annotation in annotations) {
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-        if (MKMapRectIsNull(flyTo)) {
-            flyTo = pointRect;
-        } else {
-            flyTo = MKMapRectUnion(flyTo, pointRect);
-        }
-    }
-    
-    // Position the map so that all overlays and annotations are visible on screen.
-    self.mapView.visibleMapRect = flyTo;
+    self.annotations = [self.kmlParser points];
 }
 
 
@@ -98,12 +75,20 @@
 
 #pragma mark find the country
 
+- (CGPoint)pointForMapPoint:(MKMapPoint)mapPoint {
+    
+    
+    return CGPointMake(mapPoint.x, mapPoint.y);
+    
+}
+
+
+
 - (IBAction)findTheCountry:(id)sender {
     
     // The two properties to compare.
     CGMutablePathRef mutablePathReference = CGPathCreateMutable();
     CGPoint polygonCoordinatePoint = CGPointMake(self.locationInAmsterdam.longitude, self.locationInAmsterdam.latitude);
-    
     
     // Looping through the polygon's, obtained by the kml parser.
     for (MKPolygon *country in self.countries) {
@@ -120,20 +105,63 @@
                 CGPathAddLineToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
             }
             
-            // Checking if the point lies inside the polygon.
-            BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
-            
-            if (pointIsInPolygon) {
-                
-                self.polygonCountryOnTheMap = country;
-                CGPathRelease(mutablePathReference);
+        }
+        
+        // Checking if the point lies inside the polygon.
+        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
+
+        
+        NSLog(@"%@",country.title);
+        if(!pointIsInPolygon) {
+            NSLog(@"bummer");
+
+        } else if (pointIsInPolygon)
+            {
+                NSLog(@"We've finally got a winner");
             }
-            
-        } if (self.polygonCountryOnTheMap != nil) {
-            break;
+        
         }
     }
-}
+
+//            // Checking if the point lies inside the polygon.
+//            BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, polygonCoordinatePoint, FALSE);
+            
+//            if (pointIsInPolygon) {
+//                
+//                // Giving the country's property polygon to the property that needs to be drawn on the map.
+//                self.polygonCountryOnTheMap = country;
+//                CGPathRelease(mutablePathReference);
+//            }
+//            
+//        } if (self.polygonCountryOnTheMap != nil) {
+//            break;
+//        }
+//    }
+//    
+//    // Walk the list of overlays and annotations and create a MKMapRect that
+//    // bounds all of them and store it into flyTo.
+//    MKMapRect flyTo = MKMapRectNull;
+//    for (id <MKOverlay> overlay in self.countries) {
+//        if (MKMapRectIsNull(flyTo)) {
+//            flyTo = [overlay boundingMapRect];
+//        } else {
+//            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
+//        }
+//    }
+//    
+//    for (id <MKAnnotation> annotation in self.annotations) {
+//        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+//        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+//        if (MKMapRectIsNull(flyTo)) {
+//            flyTo = pointRect;
+//        } else {
+//            flyTo = MKMapRectUnion(flyTo, pointRect);
+//        }
+//    }
+//    
+//    // Position the map so that all overlays and annotations are visible on screen.
+//    self.mapView.visibleMapRect = flyTo;
+
 
     
         

@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhichCountryVC">
             <connections>
                 <outlet property="geoLocation" destination="fFH-b1-C6K" id="2s9-XG-GSY"/>
-                <outlet property="map" destination="N7Z-zJ-ZOZ" id="DLH-bG-yYG"/>
+                <outlet property="mapView" destination="N7Z-zJ-ZOZ" id="OJQ-xz-Z86"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,6 +19,9 @@
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="N7Z-zJ-ZOZ">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="7id-K3-AtQ"/>
+                    </connections>
                 </mapView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a geolocation to update the map with the correct country!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fFH-b1-C6K">
                     <rect key="frame" x="28" y="28" width="544" height="30"/>

@@ -13,6 +13,7 @@
 		1D4CB5CA1C4A406B002B0402 /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C51C4A406B002B0402 /* KMLParser.m */; };
 		1D4CB5CB1C4A406B002B0402 /* KMLViewerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C71C4A406B002B0402 /* KMLViewerAppDelegate.m */; };
 		1D4CB5CC1C4A406B002B0402 /* KMLViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C91C4A406B002B0402 /* KMLViewerViewController.m */; };
+		1D4CB5CF1C4BA2C0002B0402 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */; };
 		1D6425601C4951F800D2341F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
 		1D6425631C4951F800D2341F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
 		1D64256B1C4951F800D2341F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256A1C4951F800D2341F /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		1D4CB5C71C4A406B002B0402 /* KMLViewerAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLViewerAppDelegate.m; sourceTree = "<group>"; };
 		1D4CB5C81C4A406B002B0402 /* KMLViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLViewerViewController.h; sourceTree = "<group>"; };
 		1D4CB5C91C4A406B002B0402 /* KMLViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLViewerViewController.m; sourceTree = "<group>"; };
+		1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1D64255B1C4951F800D2341F /* WhichCountryObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhichCountryObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D64255F1C4951F800D2341F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D6425611C4951F800D2341F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4CB5CF1C4BA2C0002B0402 /* CoreGraphics.framework in Frameworks */,
 				1D4CB5C01C4A3EC3002B0402 /* CoreLocation.framework in Frameworks */,
 				1D4CB5BE1C4A3E90002B0402 /* MapKit.framework in Frameworks */,
 			);
@@ -200,6 +203,7 @@
 		1D64259C1C49530200D2341F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */,
 				1D4CB5BF1C4A3EC3002B0402 /* CoreLocation.framework */,
 				1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */,
 			);
