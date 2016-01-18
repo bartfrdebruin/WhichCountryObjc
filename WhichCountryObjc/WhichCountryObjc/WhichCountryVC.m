@@ -148,8 +148,8 @@
     if (!self.pointIsInPolygon) {
         
         // Coordinate lies within the ocean.
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Do you want to swim?"
-                                                                       message:@"I think this coordinate lies in the ocean!"
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops!"
+                                                                       message:@"Either you've done something wrong, or you wanted to swim!"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault

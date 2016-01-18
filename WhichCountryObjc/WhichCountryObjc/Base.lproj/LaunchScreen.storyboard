@@ -17,33 +17,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Which" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvC-4h-L0M">
-                                <rect key="frame" x="224" y="175" width="172" height="71"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="172" id="9JC-Vf-wxE"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Country?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuL-pR-yzZ">
+                                <rect key="frame" x="190" y="265" width="221" height="81"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Country?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuL-pR-yzZ">
-                                <rect key="frame" x="204" y="265" width="192" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Which" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvC-4h-L0M">
+                                <rect key="frame" x="190" y="175" width="221" height="71"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="192" id="vVu-Ao-vna"/>
+                                    <constraint firstAttribute="width" constant="221" id="0qB-yG-3EM"/>
+                                    <constraint firstAttribute="height" constant="71" id="hi8-rY-j78"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="50"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.41087582236842107" green="0.65738075657894501" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="cvC-4h-L0M" firstAttribute="trailing" secondItem="HuL-pR-yzZ" secondAttribute="trailing" id="5Dr-mi-lLk"/>
-                            <constraint firstItem="HuL-pR-yzZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Cl7-91-dWX"/>
-                            <constraint firstItem="cvC-4h-L0M" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="155" id="Gmd-Pj-W2W"/>
-                            <constraint firstItem="HuL-pR-yzZ" firstAttribute="top" secondItem="cvC-4h-L0M" secondAttribute="bottom" constant="19" id="YiD-d4-osB"/>
-                            <constraint firstItem="HuL-pR-yzZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="aYt-6J-EWX"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HuL-pR-yzZ" secondAttribute="bottom" constant="266" id="w1l-R5-OSA"/>
+                            <constraint firstItem="HuL-pR-yzZ" firstAttribute="top" secondItem="cvC-4h-L0M" secondAttribute="bottom" constant="19" id="Pt3-nN-xB5"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HuL-pR-yzZ" secondAttribute="bottom" constant="254" id="Spv-1N-Wgi"/>
+                            <constraint firstItem="cvC-4h-L0M" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="155" id="exL-9D-hAt"/>
+                            <constraint firstItem="cvC-4h-L0M" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qco-mj-Fqn"/>
+                            <constraint firstItem="HuL-pR-yzZ" firstAttribute="leading" secondItem="cvC-4h-L0M" secondAttribute="leading" id="siU-oQ-Cjd"/>
+                            <constraint firstItem="cvC-4h-L0M" firstAttribute="trailing" secondItem="HuL-pR-yzZ" secondAttribute="trailing" id="vXT-HH-F8L"/>
                         </constraints>
                     </view>
                 </viewController>
