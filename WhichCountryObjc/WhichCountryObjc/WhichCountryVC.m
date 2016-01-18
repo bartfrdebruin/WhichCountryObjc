@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-@interface WhichCountryVC () <MKMapViewDelegate>
+@interface WhichCountryVC () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) KMLParser *kmlParser;
@@ -21,6 +21,7 @@
 @property (nonatomic) CLLocationCoordinate2D locationInAmsterdam;
 @property (nonatomic, strong) MKPolygon *polygonCountryOnTheMap;
 @property (nonatomic, strong) NSArray *annotations;
+@property (nonatomic) BOOL pointIsInPolygon;
 
 @end
 
@@ -37,23 +38,43 @@
     
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
+    
+    // Delegates.
+    self.geoLocationLatitude.delegate = self;
+    self.geoLocationLongitude.delegate = self;
+    
+    // Handle tap, to ensure the keyboard disappears.
+    UITapGestureRecognizer *tapOutsiteTextField = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(handleTap:)];
+    
+    [self.view addGestureRecognizer:tapOutsiteTextField];
+
+
 }
 
 
-#pragma mark
+#pragma mark textField
 
-// Zooming in to our location
-- (void)mapView:(MKMapView * _Nonnull)mapView didUpdateUserLocation:(MKUserLocation * _Nonnull)userLocation {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    CLLocationCoordinate2D loc = [userLocation coordinate];
-    MKCoordinateRegion region =
+    [self.geoLocationLatitude endEditing:YES];
+    [self.geoLocationLatitude resignFirstResponder];
+    [self.geoLocationLongitude endEditing:YES];
+    [self.geoLocationLongitude resignFirstResponder];
     
-    MKCoordinateRegionMakeWithDistance(loc, 1000, 1000);
-    [mapView setRegion:region animated:YES];
+    return YES;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)sender {
+    
+    [self.geoLocationLatitude resignFirstResponder];
+    [self.view endEditing:YES];
+    [self.geoLocationLongitude resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 
-#pragma mark MKMapViewDelegate
+#pragma mark Overlay Renderer 
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     
@@ -67,14 +88,12 @@
     
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    return [self.kmlParser viewForAnnotation:annotation];
-}
-
 #pragma mark find the country
 
 
 - (IBAction)findTheCountry:(id)sender {
+    
+    [self.view endEditing:YES];
     
     double geoLatitude = [self.geoLocationLatitude.text doubleValue];
     double geoLongitude = [self.geoLocationLongitude.text doubleValue];
@@ -106,9 +125,9 @@
         CGPoint coordinatePoint =  CGPointMake(cMapPoint.x, cMapPoint.y);
         
         // Checking whether point lies within an polygon.
-        BOOL pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, coordinatePoint, FALSE);
+        self.pointIsInPolygon = CGPathContainsPoint(mutablePathReference, NULL, coordinatePoint, FALSE);
         
-        if(pointIsInPolygon) {
+        if(self.pointIsInPolygon) {
             
             NSLog(@"%@",country.title);
             MKMapRect flyTo = MKMapRectNull;
@@ -123,6 +142,20 @@
         } else             {
             NSLog(@"Bummer!");
         }
+    }
+    
+    // What to do, if no results have been found.
+    if (!self.pointIsInPolygon) {
+        
+        // Coordinate lies within the ocean.
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Do you want to swim?"
+                                                                       message:@"I think this coordinate lies in the ocean!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

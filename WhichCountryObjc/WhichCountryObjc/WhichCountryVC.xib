@@ -32,10 +32,17 @@
                         <outlet property="delegate" destination="-1" id="ft8-xk-Cu6"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKo-Iv-O6e">
-                    <rect key="frame" x="526" y="66" width="46" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Find!"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKo-Iv-O6e">
+                    <rect key="frame" x="513" y="66" width="59" height="39"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="59" id="NAL-73-bMk"/>
+                        <constraint firstAttribute="height" constant="39" id="eLk-OM-ihi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Find!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="findTheCountry:" destination="-1" eventType="touchUpInside" id="dcQ-9v-Iot"/>
                     </connections>
