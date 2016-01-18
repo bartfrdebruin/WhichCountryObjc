@@ -22,6 +22,7 @@
 @property (nonatomic, strong) MKPolygon *polygonCountryOnTheMap;
 @property (nonatomic, strong) NSArray *annotations;
 @property (nonatomic) BOOL pointIsInPolygon;
+@property (strong, nonatomic) IBOutlet UIButton *findButton;
 
 @end
 
@@ -49,6 +50,7 @@
     
     [self.view addGestureRecognizer:tapOutsiteTextField];
 
+    self.findButton.layer.cornerRadius = 5;
 
 }
 
@@ -76,11 +78,11 @@
 
 #pragma mark Overlay Renderer 
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+- (MKPolygonRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     
     if ([overlay isKindOfClass:[MKPolygon class]])
     {
-        MKPolygonView* aView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon*)overlay];
+        MKPolygonRenderer* aView = [[MKPolygonRenderer alloc] initWithPolygon:(MKPolygon*)overlay];
         aView.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
         return aView;
     }
@@ -111,7 +113,6 @@
             // Creating the path.
             MKMapPoint mapPoint = countryPolygonPoints[p];
             
-            //MKMapPoint mapPoint = MKMapPointForCoordinate(countryPolygonPoints[p]);
             if (p == 0) {
                 CGPathMoveToPoint(mutablePathReference, NULL, mapPoint.x, mapPoint.y);
             } else {
