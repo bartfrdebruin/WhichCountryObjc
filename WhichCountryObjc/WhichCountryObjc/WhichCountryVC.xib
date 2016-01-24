@@ -7,9 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhichCountryVC">
             <connections>
-                <outlet property="findButton" destination="MKo-Iv-O6e" id="yjr-Yb-NQ7"/>
+                <outlet property="findButton" destination="MKo-Iv-O6e" id="ESB-qF-r0p"/>
                 <outlet property="geoLocationLatitude" destination="fFH-b1-C6K" id="4kr-Yi-wgt"/>
                 <outlet property="geoLocationLongitude" destination="9Pv-Dj-UCU" id="dGY-3f-q8i"/>
+                <outlet property="geolocationLatitude" destination="fFH-b1-C6K" id="1W0-d9-zfZ"/>
+                <outlet property="geolocationLongitude" destination="9Pv-Dj-UCU" id="uDa-yd-6pX"/>
                 <outlet property="mapView" destination="N7Z-zJ-ZOZ" id="OJQ-xz-Z86"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -46,7 +48,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="findTheCountry:" destination="-1" eventType="touchUpInside" id="dcQ-9v-Iot"/>
+                        <action selector="findTheCountry:" destination="-1" eventType="touchUpInside" id="LLO-T7-9ld"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longitude" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-Dj-UCU">

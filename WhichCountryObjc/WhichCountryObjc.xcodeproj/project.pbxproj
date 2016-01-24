@@ -8,17 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1D4CB5BE1C4A3E90002B0402 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */; };
-		1D4CB5C01C4A3EC3002B0402 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5BF1C4A3EC3002B0402 /* CoreLocation.framework */; };
 		1D4CB5C21C4A3FF2002B0402 /* world-stripped.kml in Resources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */; };
-		1D4CB5CA1C4A406B002B0402 /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C51C4A406B002B0402 /* KMLParser.m */; };
 		1D4CB5CF1C4BA2C0002B0402 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */; };
-		1D6425601C4951F800D2341F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
-		1D6425631C4951F800D2341F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
 		1D64256B1C4951F800D2341F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256A1C4951F800D2341F /* Assets.xcassets */; };
 		1D64256E1C4951F800D2341F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256C1C4951F800D2341F /* LaunchScreen.storyboard */; };
 		1D6425791C4951F800D2341F /* WhichCountryObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425781C4951F800D2341F /* WhichCountryObjcTests.m */; };
 		1D6425841C4951F800D2341F /* WhichCountryObjcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425831C4951F800D2341F /* WhichCountryObjcUITests.m */; };
-		1D6425941C49523600D2341F /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
 		1D6425951C49523600D2341F /* WhichCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6425931C49523600D2341F /* WhichCountryVC.xib */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D29EC2E1C510F2B00C68280 /* WhichCountryObjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhichCountryObjc-Bridging-Header.h"; sourceTree = "<group>"; };
+		1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichCountryVC.swift; sourceTree = "<group>"; };
 		1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		1D4CB5BF1C4A3EC3002B0402 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "world-stripped.kml"; sourceTree = "<group>"; };
 		1D4CB5C41C4A406B002B0402 /* KMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLParser.h; sourceTree = "<group>"; };
 		1D4CB5C51C4A406B002B0402 /* KMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLParser.m; sourceTree = "<group>"; };
@@ -70,7 +66,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D4CB5CF1C4BA2C0002B0402 /* CoreGraphics.framework in Frameworks */,
-				1D4CB5C01C4A3EC3002B0402 /* CoreLocation.framework in Frameworks */,
 				1D4CB5BE1C4A3E90002B0402 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,8 +179,10 @@
 			children = (
 				1D6425911C49523600D2341F /* WhichCountryVC.h */,
 				1D6425921C49523600D2341F /* WhichCountryVC.m */,
+				1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */,
 				1D6425931C49523600D2341F /* WhichCountryVC.xib */,
 				1D4CB5C31C4A3FFB002B0402 /* KML */,
+				1D29EC2E1C510F2B00C68280 /* WhichCountryObjc-Bridging-Header.h */,
 			);
 			name = WhichCountryVC;
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */,
-				1D4CB5BF1C4A3EC3002B0402 /* CoreLocation.framework */,
 				1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -332,10 +328,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D6425631C4951F800D2341F /* AppDelegate.m in Sources */,
-				1D6425941C49523600D2341F /* WhichCountryVC.m in Sources */,
-				1D6425601C4951F800D2341F /* main.m in Sources */,
-				1D4CB5CA1C4A406B002B0402 /* KMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WhichCountryObjc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -476,6 +469,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.BartdeBruin.WhichCountryObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhichCountryObjc/WhichCountryObjc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -483,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WhichCountryObjc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -493,6 +489,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.BartdeBruin.WhichCountryObjc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhichCountryObjc/WhichCountryObjc-Bridging-Header.h";
 			};
 			name = Release;
 		};

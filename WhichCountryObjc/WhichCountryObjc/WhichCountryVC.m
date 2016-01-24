@@ -40,6 +40,8 @@
     // Setting up the array with polygons.
     self.countries = [self.kmlParser overlays];
     
+    
+    
     // Delegates.
     self.geoLocationLatitude.delegate = self;
     self.geoLocationLongitude.delegate = self;
