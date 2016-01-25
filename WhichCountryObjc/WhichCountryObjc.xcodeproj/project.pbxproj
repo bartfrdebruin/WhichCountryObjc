@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,10 @@
 		1D6425791C4951F800D2341F /* WhichCountryObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425781C4951F800D2341F /* WhichCountryObjcTests.m */; };
 		1D6425841C4951F800D2341F /* WhichCountryObjcUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425831C4951F800D2341F /* WhichCountryObjcUITests.m */; };
 		1D6425951C49523600D2341F /* WhichCountryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6425931C49523600D2341F /* WhichCountryVC.xib */; };
+		1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
+		1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C51C4A406B002B0402 /* KMLParser.m */; };
+		1D9860061C560B8F00F1EFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
+		1D98600A1C561ECC00F1EFFD /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,7 +280,7 @@
 				};
 			};
 			buildConfigurationList = 1D6425561C4951F800D2341F /* Build configuration list for PBXProject "WhichCountryObjc" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -328,6 +332,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D98600A1C561ECC00F1EFFD /* WhichCountryVC.m in Sources */,
+				1D9860061C560B8F00F1EFFD /* main.m in Sources */,
+				1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */,
+				1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

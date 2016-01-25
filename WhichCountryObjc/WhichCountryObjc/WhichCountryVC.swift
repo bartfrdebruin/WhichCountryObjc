@@ -5,12 +5,11 @@
 //  Created by Bart de Bruin on 21-01-16.
 //  Copyright © 2016 BartdeBruin. All rights reserved.
 //
-
 import UIKit
+import MapKit
 import CoreGraphics
 
-
-class WhichCountryVC: UIViewController, UITextFieldDelegate{
+@objc class WhichCountryVC: UIViewController, UITextFieldDelegate{
     
     var kmlParser: KMLParser!
     var countries: NSArray
