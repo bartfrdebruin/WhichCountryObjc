@@ -10,6 +10,7 @@
 		1D4CB5BE1C4A3E90002B0402 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */; };
 		1D4CB5C21C4A3FF2002B0402 /* world-stripped.kml in Resources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */; };
 		1D4CB5CF1C4BA2C0002B0402 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4CB5CE1C4BA2C0002B0402 /* CoreGraphics.framework */; };
+		1D4E23DC1C564B8300C74BC3 /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
 		1D64256B1C4951F800D2341F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256A1C4951F800D2341F /* Assets.xcassets */; };
 		1D64256E1C4951F800D2341F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D64256C1C4951F800D2341F /* LaunchScreen.storyboard */; };
 		1D6425791C4951F800D2341F /* WhichCountryObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425781C4951F800D2341F /* WhichCountryObjcTests.m */; };
@@ -18,7 +19,6 @@
 		1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
 		1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C51C4A406B002B0402 /* KMLParser.m */; };
 		1D9860061C560B8F00F1EFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
-		1D98600B1C56210A00F1EFFD /* WhichCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D29EC2E1C510F2B00C68280 /* WhichCountryObjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhichCountryObjc-Bridging-Header.h"; sourceTree = "<group>"; };
-		1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhichCountryVC.swift; sourceTree = "<group>"; };
 		1D4CB5BD1C4A3E90002B0402 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "world-stripped.kml"; sourceTree = "<group>"; };
 		1D4CB5C41C4A406B002B0402 /* KMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLParser.h; sourceTree = "<group>"; };
@@ -183,10 +181,8 @@
 			children = (
 				1D6425911C49523600D2341F /* WhichCountryVC.h */,
 				1D6425921C49523600D2341F /* WhichCountryVC.m */,
-				1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */,
 				1D6425931C49523600D2341F /* WhichCountryVC.xib */,
 				1D4CB5C31C4A3FFB002B0402 /* KML */,
-				1D29EC2E1C510F2B00C68280 /* WhichCountryObjc-Bridging-Header.h */,
 			);
 			name = WhichCountryVC;
 			sourceTree = "<group>";
@@ -332,8 +328,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4E23DC1C564B8300C74BC3 /* WhichCountryVC.m in Sources */,
 				1D9860061C560B8F00F1EFFD /* main.m in Sources */,
-				1D98600B1C56210A00F1EFFD /* WhichCountryVC.swift in Sources */,
 				1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */,
 				1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */,
 			);
