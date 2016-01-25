@@ -18,7 +18,7 @@
 		1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425621C4951F800D2341F /* AppDelegate.m */; };
 		1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4CB5C51C4A406B002B0402 /* KMLParser.m */; };
 		1D9860061C560B8F00F1EFFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D64255F1C4951F800D2341F /* main.m */; };
-		1D98600A1C561ECC00F1EFFD /* WhichCountryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6425921C49523600D2341F /* WhichCountryVC.m */; };
+		1D98600B1C56210A00F1EFFD /* WhichCountryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D29EC2F1C510F2B00C68280 /* WhichCountryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,8 +332,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D98600A1C561ECC00F1EFFD /* WhichCountryVC.m in Sources */,
 				1D9860061C560B8F00F1EFFD /* main.m in Sources */,
+				1D98600B1C56210A00F1EFFD /* WhichCountryVC.swift in Sources */,
 				1D9860041C560B7300F1EFFD /* AppDelegate.m in Sources */,
 				1D9860051C560B7800F1EFFD /* KMLParser.m in Sources */,
 			);

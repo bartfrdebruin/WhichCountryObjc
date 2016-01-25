@@ -8,10 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WhichCountryVC">
             <connections>
                 <outlet property="findButton" destination="MKo-Iv-O6e" id="ESB-qF-r0p"/>
-                <outlet property="geoLocationLatitude" destination="fFH-b1-C6K" id="4kr-Yi-wgt"/>
-                <outlet property="geoLocationLongitude" destination="9Pv-Dj-UCU" id="dGY-3f-q8i"/>
-                <outlet property="geolocationLatitude" destination="fFH-b1-C6K" id="1W0-d9-zfZ"/>
-                <outlet property="geolocationLongitude" destination="9Pv-Dj-UCU" id="uDa-yd-6pX"/>
+                <outlet property="geolocationLatitude" destination="fFH-b1-C6K" id="tLq-m3-IHD"/>
+                <outlet property="geolocationLongitude" destination="9Pv-Dj-UCU" id="wrp-sh-J3f"/>
                 <outlet property="mapView" destination="N7Z-zJ-ZOZ" id="OJQ-xz-Z86"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
