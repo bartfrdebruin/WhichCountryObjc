@@ -32,14 +32,16 @@ import CoreGraphics
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setToolbarHidden(false, animated: false)
 
         let path = NSBundle.mainBundle().pathForResource("world-stripped", ofType: "kml")
-        let url = NSURL.fileURLWithPath("path")
+        let url = NSURL.fileURLWithPath((path)! as String)
         self.kmlParser = KMLParser(URL: url)
         self.kmlParser.parseKML()
         
@@ -50,15 +52,10 @@ import CoreGraphics
         self.geolocationLatitude.delegate = self
         self.geolocationLongitude.delegate = self
         
-        let tapOutsideTextField = UITapGestureRecognizer(target: self, action: "handleTap")
+        let tapOutsideTextField = UITapGestureRecognizer(target: self, action: "handleTap:")
         self.view.addGestureRecognizer(tapOutsideTextField)
         
         self.findButton.layer.cornerRadius = 5
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -107,7 +104,8 @@ import CoreGraphics
                 } else {
                     CGPathAddLineToPoint(mutablePathReference, nil, (CGFloat(mapPoint.x)), CGFloat(mapPoint.y))
                 }
-                
+            }
+            
                 let c2d = CLLocationCoordinate2DMake(geoLatitude!, geoLongitude!)
                 let cMapPoint = MKMapPointForCoordinate(c2d)
                 let coordinatePoint = CGPointMake((CGFloat(cMapPoint.x)),(CGFloat(cMapPoint.y)))
@@ -149,7 +147,7 @@ import CoreGraphics
         
         
         
-    }
+    
     
 
     

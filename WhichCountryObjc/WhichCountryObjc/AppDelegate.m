@@ -23,6 +23,10 @@
     WhichCountryVC *whichCountryVC = [[WhichCountryVC alloc] init];
     self.window.rootViewController = whichCountryVC;
     
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:whichCountryVC];
+    
+    self.window.rootViewController = navigationController;
+    
     return YES;
 }
 
