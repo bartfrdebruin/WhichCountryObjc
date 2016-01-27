@@ -16,7 +16,6 @@ import CoreGraphics
     var countries: NSArray
     var pointIsInPolygon: Bool
     var polygonCountryOnTheMap: MKPolygon?
-    var country: MKPolygon?
     
     @IBOutlet var geolocationLatitude: UITextField!
     @IBOutlet var geolocationLongitude: UITextField!
@@ -76,9 +75,20 @@ import CoreGraphics
         self.view .endEditing(true)
     }
     
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+            
+            if overlay.isKindOfClass(MKPolygon) {
+                
+                let overlayView = MKPolygonRenderer(overlay: overlay)
+                overlayView.strokeColor = UIColor.redColor()
+                overlayView.fillColor = UIColor.greenColor()
+                overlayView.alpha = 0.2
+                return overlayView
+            }
+        return nil
+    }
     
-    
-    
+
     @IBAction func findTheCountry(sender: AnyObject) {
         
         self.view.endEditing(true)
@@ -87,7 +97,7 @@ import CoreGraphics
         let geoLongitude = Double(self.geolocationLongitude.text!)
         
         // Looping through the polygon's obtained by the kml parser.
-        for country in self.countries {
+        for country in self.countries as! [MKPolygon] {
             
             // Two properties to compare.
             let mutablePathReference = CGPathCreateMutable()
@@ -106,52 +116,43 @@ import CoreGraphics
                 }
             }
             
-                let c2d = CLLocationCoordinate2DMake(geoLatitude!, geoLongitude!)
-                let cMapPoint = MKMapPointForCoordinate(c2d)
-                let coordinatePoint = CGPointMake((CGFloat(cMapPoint.x)),(CGFloat(cMapPoint.y)))
-                
-                
-                self.pointIsInPolygon = CGPathContainsPoint(mutablePathReference, nil, coordinatePoint, false)
-                
-                if (self.pointIsInPolygon) {
-                    
-                    print(country.title)
-                    var flyto: MKMapRect = MKMapRectNull
-                    
-                    self.mapView.addOverlay(self.country!)
-                    flyto = self.country!.boundingMapRect
-                    
-                    self.mapView.visibleMapRect = flyto
-                    
-                    break
-                    
-                    // If no matching polygon has been found.
-                } else {
-                    
-                    print("bummer")
-                    
-                }
-                
-                
-                
-            }
+            let c2d = CLLocationCoordinate2DMake(geoLatitude!, geoLongitude!)
+            let cMapPoint = MKMapPointForCoordinate(c2d)
+            let coordinatePoint = CGPointMake((CGFloat(cMapPoint.x)),(CGFloat(cMapPoint.y)))
             
+            
+            self.pointIsInPolygon = CGPathContainsPoint(mutablePathReference, nil, coordinatePoint, false)
+            
+            if (self.pointIsInPolygon) {
+                
+                print(country.title)
+                var flyto: MKMapRect = MKMapRectNull
+                
+                self.mapView.addOverlay(country)
+                flyto = country.boundingMapRect
+                
+                self.mapView.visibleMapRect = flyto
+                
+                break
+                
+                // If no matching polygon has been found.
+            } else {
+                print("bummer")
+            }
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // Coordinate lies within the ocean.
+        if (!self.pointIsInPolygon) {
+            
+            let alert = UIAlertController(title: "Oops", message: "Either you've done something wrong, or you wanted to swim!",
+                preferredStyle:UIAlertControllerStyle.Alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style:.Cancel, handler: nil)
+            alert.addAction(defaultAction)
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
-    
-
-    
-
-
 
 }

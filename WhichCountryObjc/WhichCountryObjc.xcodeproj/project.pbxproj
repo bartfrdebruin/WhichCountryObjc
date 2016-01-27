@@ -94,6 +94,7 @@
 		1D4CB5C31C4A3FFB002B0402 /* KML */ = {
 			isa = PBXGroup;
 			children = (
+				1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */,
 			);
 			name = KML;
 			sourceTree = "<group>";
@@ -101,7 +102,6 @@
 		1D4CB5CD1C4A4072002B0402 /* KML viewer */ = {
 			isa = PBXGroup;
 			children = (
-				1D4CB5C11C4A3FF2002B0402 /* world-stripped.kml */,
 				1D4CB5C41C4A406B002B0402 /* KMLParser.h */,
 				1D4CB5C51C4A406B002B0402 /* KMLParser.m */,
 			);
