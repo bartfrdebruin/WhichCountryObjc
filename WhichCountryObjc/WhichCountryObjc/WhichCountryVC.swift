@@ -36,9 +36,15 @@ import CoreGraphics
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Navigation controller.
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationController?.setToolbarHidden(false, animated: false)
-
+        
+        let mapviewButton = UIBarButtonItem(title: "MapView", style:.Plain, target: self, action: "mapviewButton:")
+        let space = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let collectionviewButton = UIBarButtonItem(title: "CollectionView", style: .Plain, target: self, action: "collectionviewButton")
+        toolbarItems = [mapviewButton, space, collectionviewButton]
+        
         let path = NSBundle.mainBundle().pathForResource("world-stripped", ofType: "kml")
         let url = NSURL.fileURLWithPath((path)! as String)
         self.kmlParser = KMLParser(URL: url)
@@ -57,6 +63,13 @@ import CoreGraphics
         self.findButton.layer.cornerRadius = 5
     }
     
+    func collectionviewButton () -> Void {
+        
+        let countryCollectionVC = CountryCollectionVC()
+        self.navigationController?.presentViewController(countryCollectionVC, animated: true, completion: {})
+    }
+    
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         self.geolocationLatitude.endEditing(true)
@@ -67,6 +80,7 @@ import CoreGraphics
         return true
     }
     
+    
     func handleTap(sender:UITapGestureRecognizer) {
         
         self.geolocationLatitude.resignFirstResponder()
@@ -74,6 +88,7 @@ import CoreGraphics
         self.geolocationLongitude.resignFirstResponder()
         self.view .endEditing(true)
     }
+    
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
             
@@ -120,9 +135,10 @@ import CoreGraphics
             let cMapPoint = MKMapPointForCoordinate(c2d)
             let coordinatePoint = CGPointMake((CGFloat(cMapPoint.x)),(CGFloat(cMapPoint.y)))
             
-            
+            // Checking if the point lies within the polygon.
             self.pointIsInPolygon = CGPathContainsPoint(mutablePathReference, nil, coordinatePoint, false)
             
+            // If the point lies within the polygon, using the polygon to draw it as an overlay on the map.
             if (self.pointIsInPolygon) {
                 
                 print(country.title)
