@@ -9,21 +9,37 @@
 import UIKit
 
 class CountryCollectionVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-                
-
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.viewSetUp()
     }
     
-
+    
+    
+    
+    func viewSetUp() -> Void {
+        
+        // Connections with other views.
+        let mapviewButton = UIBarButtonItem(title: "MapView", style:.Plain, target: self, action: "mapviewButton")
+        let space = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: self, action: nil)
+        let collectionviewButton = UIBarButtonItem(title: "CollectionView", style: .Plain, target: self, action: "collectionviewButton")
+        toolbarItems = [mapviewButton, space, collectionviewButton]
+        
+        collectionviewButton.enabled = false
+    }
+    
+    func mapviewButton() -> Void {
+        
+        let whichCountryVC = WhichCountryVC()
+        self.navigationController?.pushViewController(whichCountryVC, animated: true)
+        
+    }
+    
+    
+ 
+    
   
 
 }
