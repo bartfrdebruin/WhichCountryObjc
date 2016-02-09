@@ -8,16 +8,21 @@
 
 import UIKit
 
-class CountryCollectionVC: UIViewController {
+class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+
+    // MARK: properties.
+    var collectionView: UICollectionView!
+    var collectionViewSnapshots: NSMutableArray?
     
+    // MARK: view did load.
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.viewSetUp()
+        self.collectionviewSetUp()
     }
     
-    
-    
+    // MARK: setting up the view.
     
     func viewSetUp() -> Void {
         
@@ -28,14 +33,58 @@ class CountryCollectionVC: UIViewController {
         toolbarItems = [mapviewButton, space, collectionviewButton]
         
         collectionviewButton.enabled = false
+        
     }
     
     func mapviewButton() -> Void {
         
         let whichCountryVC = WhichCountryVC()
         self.navigationController?.pushViewController(whichCountryVC, animated: true)
+    }
+    
+    // MARK: collection view
+    
+    func collectionviewSetUp() -> Void {
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        let frame = CGRectMake(0, 0, screenSize.width, screenSize.height)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 150, height: 150)
+        
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.backgroundColor = UIColor.whiteColor()
+        
+        self.view.addSubview(collectionView)
+    }
+    
+    
+    // MARK: collection view datasource. 
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.collectionViewSnapshots!.count
         
     }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor.orangeColor()
+        
+        return cell
+    }
+    
+    // MARK: customisation of collection view. 
+    
+    
+    
     
     
  

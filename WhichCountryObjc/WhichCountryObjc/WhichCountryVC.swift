@@ -10,15 +10,15 @@ import UIKit
 import MapKit
 import CoreGraphics
 
-@objc class WhichCountryVC: UIViewController, UITextFieldDelegate {
+@objc public class WhichCountryVC: UIViewController, UITextFieldDelegate {
     
     
-    // Properties
+    // MARK: class variables.
     var kmlParser: KMLParser!
     var countries: NSArray
     var pointIsInPolygon: Bool
     var polygonCountryOnTheMap: MKPolygon?
-    var countriesForCollectionView: NSMutableArray
+    var snapshotsForCV: NSMutableArray
     
     @IBOutlet var geolocationLatitude: UITextField!
     @IBOutlet var geolocationLongitude: UITextField!
@@ -26,21 +26,21 @@ import CoreGraphics
     @IBOutlet var findButton: UIButton!
     
     
-    // Init's.
+    // MARK: init's
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         
         self.countries = []
-        self.countriesForCollectionView = []
+        self.snapshotsForCV = []
         self.pointIsInPolygon = true
         super.init(nibName: "WhichCountryVC", bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // View did load.
-    override func viewDidLoad() {
+    // MARK: view methods.
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         // Navigation controller.
@@ -63,11 +63,13 @@ import CoreGraphics
         
         let tapOutsideTextField = UITapGestureRecognizer(target: self, action: "handleTap:")
         self.view.addGestureRecognizer(tapOutsideTextField)
+    }
+    
+    override public func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
         
     }
     
-    
-    // Setting up the view.
     func viewSetUp() -> Void {
         
         // Connections with other views.
@@ -83,14 +85,18 @@ import CoreGraphics
         
     }
     
+    
     func collectionviewButton() -> Void {
         
         let countryCollectionVC = CountryCollectionVC()
+        
+        // Passing on the snapshots.
+        countryCollectionVC.collectionViewSnapshots = self.snapshotsForCV
         self.navigationController?.pushViewController(countryCollectionVC, animated: true)
     }
     
-    // Textfields.
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    // MARK: textfield en screen stuff.
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         self.geolocationLatitude.endEditing(true)
         self.geolocationLatitude.resignFirstResponder()
@@ -109,7 +115,7 @@ import CoreGraphics
         self.view .endEditing(true)
     }
     
-    
+    // MARK: mapview.
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
             
             if overlay.isKindOfClass(MKPolygon) {
@@ -124,6 +130,7 @@ import CoreGraphics
     }
     
 
+    // MARK: main finding method.
     @IBAction func findTheCountry(sender: AnyObject) {
         
         self.view.endEditing(true)
@@ -165,10 +172,10 @@ import CoreGraphics
                 var flyto: MKMapRect = MKMapRectNull
                 
                 self.mapView.addOverlay(country)
-                self.countriesForCollectionView.addObject(country)
                 flyto = country.boundingMapRect
                 
                 self.mapView.visibleMapRect = flyto
+                self.savingTheMapView()
                 
                 break
                 
@@ -191,5 +198,25 @@ import CoreGraphics
         }
     }
     
-
+    func savingTheMapView() -> Void {
+        
+        let snapshotOptions = MKMapSnapshotOptions()
+        snapshotOptions.region = mapView.region
+        snapshotOptions.size = mapView.frame.size
+        snapshotOptions.scale = UIScreen.mainScreen().scale
+        
+        let snapshotter = MKMapSnapshotter(options: snapshotOptions)
+        snapshotter.startWithCompletionHandler { snapshot, error in
+            
+            if let snapshot = snapshot {
+                self.snapshotsForCV.addObject(snapshot.image)
+                
+            } else {
+                print("Snapshot error: \(error)")
+                return
+            }
+        }
+    }
+    
+    
 }
