@@ -33,7 +33,6 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         toolbarItems = [mapviewButton, space, collectionviewButton]
         
         collectionviewButton.enabled = false
-        
     }
     
     func mapviewButton() -> Void {
@@ -54,11 +53,12 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         layout.itemSize = CGSize(width: 150, height: 150)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView.backgroundColor = UIColor.whiteColor()
+        
+        let countryCVCNib = UINib(nibName: "CountryCollectionViewCell", bundle:nil)
+        collectionView.registerNib(countryCVCNib, forCellWithReuseIdentifier: "Cell")
+        collectionView.backgroundColor = UIColor.redColor()
         
         self.view.addSubview(collectionView)
     }
@@ -68,20 +68,20 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return self.collectionViewSnapshots!.count
-        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! CountryCollectionViewCell
+        let collectionviewSnapshot = self.collectionViewSnapshots![indexPath.row]
         
-        
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.orangeColor()
+        cell.collectionviewImage.image = collectionviewSnapshot as? UIImage
+        cell.collectionviewImage.layer.cornerRadius = 10
+        cell.clipsToBounds = true
         
         return cell
     }
     
-    // MARK: customisation of collection view. 
     
     
     

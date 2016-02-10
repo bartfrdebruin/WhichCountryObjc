@@ -85,16 +85,6 @@ import CoreGraphics
         
     }
     
-    
-    func collectionviewButton() -> Void {
-        
-        let countryCollectionVC = CountryCollectionVC()
-        
-        // Passing on the snapshots.
-        countryCollectionVC.collectionViewSnapshots = self.snapshotsForCV
-        self.navigationController?.pushViewController(countryCollectionVC, animated: true)
-    }
-    
     // MARK: textfield en screen stuff.
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         
@@ -218,5 +208,14 @@ import CoreGraphics
         }
     }
     
+    
+    func collectionviewButton() -> Void {
+        
+        let countryCollectionVC = CountryCollectionVC()
+        
+        // Passing on the snapshots.
+        countryCollectionVC.collectionViewSnapshots = self.snapshotsForCV
+        self.navigationController?.pushViewController(countryCollectionVC, animated: true)
+    }
     
 }
