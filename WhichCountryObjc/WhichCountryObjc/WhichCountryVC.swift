@@ -199,7 +199,9 @@ import CoreGraphics
         snapshotter.startWithCompletionHandler { snapshot, error in
             
             if let snapshot = snapshot {
+  
                 self.snapshotsForCV.addObject(snapshot.image)
+                self.savingSnapshotLocally(snapshot)
                 
             } else {
                 print("Snapshot error: \(error)")
@@ -208,8 +210,25 @@ import CoreGraphics
         }
     }
     
+    func savingSnapshotLocally(snapshot: MKMapSnapshot) -> Bool {
     
-    func collectionviewButton() -> Void {
+        // Passing the image.
+        let imageData = UIImagePNGRepresentation(snapshot.image)
+        
+        // Document directory.
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        
+        let uuid = NSUUID()
+        
+        // imageurl with UUIDString. 
+        let imageURL = documentsURL.URLByAppendingPathComponent(uuid.UUIDString)
+        
+        let result = imageData?.writeToURL(imageURL, atomically: true)
+        
+        return result!
+    }
+    
+        func collectionviewButton() -> Void {
         
         let countryCollectionVC = CountryCollectionVC()
         

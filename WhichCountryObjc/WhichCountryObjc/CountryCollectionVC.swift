@@ -34,7 +34,7 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         
         collectionviewButton.enabled = false
     }
-    
+        
     func mapviewButton() -> Void {
         
         let whichCountryVC = WhichCountryVC()
