@@ -10,6 +10,22 @@ import UIKit
 import MapKit
 import CoreGraphics
 
+func getDocumentsURL() -> NSURL {
+    
+    let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains:.UserDomainMask)[0]
+    return documentsURL
+    
+}
+
+func fileInDocumentsDirectory(filename: String) -> String {
+    
+    let uuid = NSUUID().UUIDString
+    
+    let fileURL = getDocumentsURL().URLByAppendingPathComponent(uuid)
+    return fileURL.path!
+}
+
+
 @objc public class WhichCountryVC: UIViewController, UITextFieldDelegate {
     
     
@@ -201,7 +217,11 @@ import CoreGraphics
             if let snapshot = snapshot {
   
                 self.snapshotsForCV.addObject(snapshot.image)
-                self.savingSnapshotLocally(snapshot)
+                
+                let imageDirectory = "images"
+                let imagePath = fileInDocumentsDirectory(imageDirectory)
+                self.savingSnapshotLocally(snapshot, path: imagePath)
+                
                 
             } else {
                 print("Snapshot error: \(error)")
@@ -210,20 +230,11 @@ import CoreGraphics
         }
     }
     
-    func savingSnapshotLocally(snapshot: MKMapSnapshot) -> Bool {
+    func savingSnapshotLocally(snapshot: MKMapSnapshot, path: String) -> Bool {
     
-        // Passing the image.
+        // Passing the image as data.
         let imageData = UIImagePNGRepresentation(snapshot.image)
-        
-        // Document directory.
-        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        
-        let uuid = NSUUID()
-        
-        // imageurl with UUIDString. 
-        let imageURL = documentsURL.URLByAppendingPathComponent(uuid.UUIDString)
-        
-        let result = imageData?.writeToURL(imageURL, atomically: true)
+        let result = imageData?.writeToFile(path, atomically: true)
         
         return result!
     }

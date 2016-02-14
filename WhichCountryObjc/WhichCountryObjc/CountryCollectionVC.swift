@@ -13,6 +13,7 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
     // MARK: properties.
     var collectionView: UICollectionView!
     var collectionViewSnapshots: NSMutableArray?
+    var urlConcents: NSArray?
     
     // MARK: view did load.
     override func viewDidLoad() {
@@ -20,6 +21,29 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         
         self.viewSetUp()
         self.collectionviewSetUp()
+        self.findMyStoredImages()
+    }
+    
+    // MARK: getting image data. 
+    
+    func findMyStoredImages() -> Void {
+        
+        // Passing the bundleurl.
+        let bundleURL = getDocumentsURL()
+        
+        // Getting url content.
+        do {
+            self.urlConcents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(bundleURL, includingPropertiesForKeys: nil, options:NSDirectoryEnumerationOptions(rawValue: 0))
+        }
+        // error handling.
+        catch let error as NSError  {
+            print(error.description)
+        }
+        
+        for image in self.urlConcents! {
+            
+            print("Found \(image)")
+        }
     }
     
     // MARK: setting up the view.
@@ -40,6 +64,17 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         let whichCountryVC = WhichCountryVC()
         self.navigationController?.pushViewController(whichCountryVC, animated: true)
     }
+    
+    func loadImageFromPath(path: String) -> UIImage? {
+        
+        let image = UIImage(contentsOfFile: path)
+        if image == nil {
+            print("missing image at: \(path)")
+        }
+        print("loading image from path: \(path)")
+        return image
+    }
+    
     
     // MARK: collection view
     
