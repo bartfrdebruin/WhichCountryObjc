@@ -13,7 +13,7 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
     // MARK: properties.
     var collectionView: UICollectionView!
     var collectionViewSnapshots: NSMutableArray?
-    var urlConcents: NSArray?
+    var contentsOfDocumentDirectory: NSArray?
     
     // MARK: view did load.
     override func viewDidLoad() {
@@ -25,7 +25,6 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
     }
     
     // MARK: getting image data. 
-    
     func findMyStoredImages() -> Void {
         
         // Passing the bundleurl.
@@ -33,16 +32,20 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         
         // Getting url content.
         do {
-            self.urlConcents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(bundleURL, includingPropertiesForKeys: nil, options:NSDirectoryEnumerationOptions(rawValue: 0))
+            self.contentsOfDocumentDirectory = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(bundleURL, includingPropertiesForKeys: nil, options:NSDirectoryEnumerationOptions(rawValue: 0))
         }
         // error handling.
         catch let error as NSError  {
             print(error.description)
         }
         
-        for image in self.urlConcents! {
+        for content in self.contentsOfDocumentDirectory! {
             
-            print("Found \(image)")
+            print("Found \(content)")
+            
+            let imageData = NSData(contentsOfURL: content as! NSURL)
+            let image = UIImage(data: imageData!)
+            self.collectionViewSnapshots?.addObject(image!)
         }
     }
     
@@ -65,17 +68,6 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         self.navigationController?.pushViewController(whichCountryVC, animated: true)
     }
     
-    func loadImageFromPath(path: String) -> UIImage? {
-        
-        let image = UIImage(contentsOfFile: path)
-        if image == nil {
-            print("missing image at: \(path)")
-        }
-        print("loading image from path: \(path)")
-        return image
-    }
-    
-    
     // MARK: collection view
     
     func collectionviewSetUp() -> Void {
@@ -85,7 +77,7 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         let frame = CGRectMake(0, 0, screenSize.width, screenSize.height)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.itemSize = CGSize(width: 100, height: 100)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -93,7 +85,7 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         
         let countryCVCNib = UINib(nibName: "CountryCollectionViewCell", bundle:nil)
         collectionView.registerNib(countryCVCNib, forCellWithReuseIdentifier: "Cell")
-        collectionView.backgroundColor = UIColor.redColor()
+        collectionView.backgroundColor = UIColor.grayColor()
         
         self.view.addSubview(collectionView)
     }
@@ -111,9 +103,9 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         let collectionviewSnapshot = self.collectionViewSnapshots![indexPath.row]
         
         cell.collectionviewImage.image = collectionviewSnapshot as? UIImage
-        cell.collectionviewImage.layer.cornerRadius = 10
-        cell.clipsToBounds = true
-        
+        cell.collectionviewImage.layer.cornerRadius = cell.collectionviewImage.frame.size.width/2
+        cell.collectionviewImage.clipsToBounds = true
+    
         return cell
     }
     
