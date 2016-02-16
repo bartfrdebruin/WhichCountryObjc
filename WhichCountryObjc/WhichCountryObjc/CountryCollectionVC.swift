@@ -14,6 +14,8 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
     var collectionView: UICollectionView!
     var collectionViewSnapshots: NSMutableArray?
     var contentsOfDocumentDirectory: NSArray?
+    var shadowLayer: CAShapeLayer!
+
     
     // MARK: view did load.
     override func viewDidLoad() {
@@ -85,11 +87,26 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         
         let countryCVCNib = UINib(nibName: "CountryCollectionViewCell", bundle:nil)
         collectionView.registerNib(countryCVCNib, forCellWithReuseIdentifier: "Cell")
-        collectionView.backgroundColor = UIColor.grayColor()
-        
+        collectionView.backgroundColor = UIColor.whiteColor()
+
         self.view.addSubview(collectionView)
     }
     
+    func layoutSubviews(cell: UICollectionViewCell) {
+        
+        let subView = UIView(frame: cell.bounds)
+        
+        subView.layer.shadowColor = UIColor.grayColor().CGColor
+        subView.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        subView.layer.shadowRadius = 2
+        subView.layer.shadowOpacity = 0.8
+        subView.layer.masksToBounds = false
+
+        subView.addSubview(cell)
+            
+        
+    }
+//
     
     // MARK: collection view datasource. 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,9 +120,11 @@ class CountryCollectionVC: UIViewController, UICollectionViewDelegateFlowLayout,
         let collectionviewSnapshot = self.collectionViewSnapshots![indexPath.row]
         
         cell.collectionviewImage.image = collectionviewSnapshot as? UIImage
-        cell.collectionviewImage.layer.cornerRadius = cell.collectionviewImage.frame.size.width/2
-        cell.collectionviewImage.clipsToBounds = true
-    
+        cell.collectionviewImage.layer.cornerRadius = 12
+        cell.contentView.clipsToBounds = true
+        
+        self.layoutSubviews(cell)
+        
         return cell
     }
     
